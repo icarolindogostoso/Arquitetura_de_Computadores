@@ -9,7 +9,7 @@ main:
 	addi $10 $0 65 # idade minima
 	addi $11 $0 40 # tempo de trabalho minimo
 	addi $12 $0 60 # idade + trabalho
-	addi $13 $0 35 # trabalho + idade
+	addi $13 $0 36 # trabalho + idade
 	sub $14 $8 $10
 	srl $14 $14 31
 	beq $14 $0 pode_aposentar
