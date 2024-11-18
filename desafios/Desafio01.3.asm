@@ -16,11 +16,9 @@ laco3:
 	beq $12 $13 fim_laco3
 	
 	add $20 $8 $12
+	add $6 $20 $0
 	
-	add $4 $20 $0
-	addi $2 $0 1
-	syscall
-	
+	jal numero
 	jal espaco
 	
 	addi $4 $0 '*'
@@ -30,11 +28,7 @@ laco3:
 	add $6 $10 $0
 	
 	jal operacao
-	
-	add $4 $6 $0
-	addi $2 $0 1
-	syscall
-	
+	jal numero
 	jal espaco
 	
 	addi $4 $0 '='
@@ -47,15 +41,9 @@ laco3:
 	add $6 $20 $0
 	
 	jal operacao
-	
-	add $4 $6 $0
-	addi $2 $0 1
-	syscall
-	
+	jal numero
 	jal espaco
-	
 	jal espaco
-	
 	jal espaco
 	
 	addi $12 $12 1
@@ -96,5 +84,11 @@ zero:
 espaco:
 	addi $4 $0 ' '
 	addi $2 $0 11
+	syscall
+	jr $31
+
+numero:
+	add $4 $6 $0
+	addi $2 $0 1
 	syscall
 	jr $31
