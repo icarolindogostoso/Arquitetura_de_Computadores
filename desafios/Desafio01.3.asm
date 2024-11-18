@@ -15,71 +15,53 @@ laco2:
 laco3:
 	beq $12 $13 fim_laco3
 	
-	addi $25 $0 10
-	
 	add $20 $8 $12
-	div $20 $25
-	mflo $24
-	mfhi $23
 	
-	add $4 $24 $0
+	add $4 $20 $0
 	addi $2 $0 1
 	syscall
 	
-	add $4 $23 $0
-	addi $2 $0 1
-	syscall
+	jal espaco
 	
 	addi $4 $0 '*'
 	addi $2 $0 11
 	syscall
 	
-	div $10 $25
-	mflo $24
-	mfhi $23
+	add $6 $10 $0
 	
-	add $4 $24 $0
+	jal operacao
+	
+	add $4 $6 $0
 	addi $2 $0 1
 	syscall
 	
-	add $4 $23 $0
-	addi $2 $0 1
-	syscall
+	jal espaco
 	
 	addi $4 $0 '='
 	addi $2 $0 11
 	syscall
 	
+	jal espaco
+	
 	mul $20 $20 $10
-	div $20 $25
-	mflo $24
-	mfhi $23
+	add $6 $20 $0
 	
-	add $4 $24 $0
+	jal operacao
+	
+	add $4 $6 $0
 	addi $2 $0 1
 	syscall
 	
-	add $4 $23 $0
-	addi $2 $0 1
-	syscall
+	jal espaco
 	
-	addi $4 $0 ' '
-	addi $2 $0 11
-	syscall
+	jal espaco
 	
-	addi $4 $0 ' '
-	addi $2 $0 11
-	syscall
-	
-	addi $4 $0 ' '
-	addi $2 $0 11
-	syscall
+	jal espaco
 	
 	addi $12 $12 1
 	j laco3
 	
 fim_laco3:
-
 	addi $4 $0 '\n'
 	addi $2 $0 11
 	syscall
@@ -88,7 +70,6 @@ fim_laco3:
 	j laco2
 	
 fim_laco2:
-
 	addi $4 $0 '\n'
 	addi $2 $0 11
 	syscall
@@ -98,3 +79,22 @@ fim_laco2:
 fim_laco1:
 	addi $2 $0 10
 	syscall
+
+operacao:
+	add $25 $0 10
+	div $6 $25
+	mflo $24
+	beq $24 $0 zero
+	jr $31
+	
+zero:
+	addi $4 $0 ' '
+	addi $2 $0 11
+	syscall
+	jr $31
+	
+espaco:
+	addi $4 $0 ' '
+	addi $2 $0 11
+	syscall
+	jr $31
