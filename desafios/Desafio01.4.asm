@@ -98,9 +98,6 @@ laco4:
 	
 	jal operacao
 	jal numero
-	jal espaco
-	jal espaco
-	jal espaco
 	
 	addi $4 $0 '\n'
 	addi $2 $0 11
